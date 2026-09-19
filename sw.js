@@ -1,4 +1,4 @@
-const CACHE_NAME = "meuestudo-v3";
+const CACHE_NAME = "meuestudo-v4";
 
 const SHELL = [
   "./",
