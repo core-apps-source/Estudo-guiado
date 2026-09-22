@@ -1,8 +1,9 @@
-const CACHE_NAME = "meuestudo-v5";
+const CACHE_NAME = "meuestudo-v7";
 
 const SHELL = [
   "./",
   "./index.html",
+  "./clean-start.js",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
