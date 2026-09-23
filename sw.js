@@ -1,9 +1,11 @@
-const CACHE_NAME = "meuestudo-v7";
+const CACHE_NAME = "meuestudo-v8";
 
 const SHELL = [
   "./",
   "./index.html",
   "./clean-start.js",
+  "./guided-tutorial.js",
+  "./guided-tutorial.css",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
