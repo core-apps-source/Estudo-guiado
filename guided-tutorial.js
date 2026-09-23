@@ -2,6 +2,18 @@
   "use strict";
 
   const GUIDE_KEY = "meu-estudo-guided-tutorial-v1";
+  const PROGRESS_KEY = "meu-estudo-guided-tutorial-progress-v2";
+  const NAV_LABELS = [
+    "Dashboard",
+    "Aulas",
+    "Exercícios",
+    "Revisões",
+    "Lembretes",
+    "Cronograma",
+    "Estatísticas",
+    "Metas",
+    "Configurações",
+  ];
 
   const steps = [
     {
@@ -12,9 +24,19 @@
       bullets: [
         "No computador, use o menu lateral; no celular, deslize pelo menu inferior para abrir as oito áreas principais.",
         "O botão Guia completo permanece disponível no canto inferior para você voltar a esta explicação quando quiser.",
-        "A introdução curta também pode ser reaberta em Configurações > Ver tutorial.",
+        "O mesmo guia prático pode ser reaberto pelo botão Guia completo a qualquer momento.",
       ],
       tip: "Comece pelo Dashboard e siga o fluxo: cadastrar aula, estudar, marcar como vista, revisar e acompanhar o progresso.",
+      task: {
+        instruction: "Clique em uma área do menu para começar.",
+        parts: [
+          {
+            kind: "click",
+            labels: NAV_LABELS,
+            hint: "Clique em Dashboard, Aulas ou outra área do menu.",
+          },
+        ],
+      },
     },
     {
       nav: "Dashboard",
@@ -30,6 +52,16 @@
         "A busca no topo encontra aulas e leva você diretamente para a área Aulas.",
       ],
       tip: "Marcar uma aula como vista é o evento que atualiza a trilha, a sequência e o ciclo automático de revisões.",
+      task: {
+        instruction: "Abra uma ação do Dashboard para reconhecer os atalhos.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Ver cronograma", "Resumo inteligente", "Ajustar"],
+            hint: "Clique em Ver cronograma, Resumo inteligente ou Ajustar.",
+          },
+        ],
+      },
     },
     {
       nav: "Dashboard",
@@ -45,6 +77,24 @@
         "O que não couber pode ser redistribuído automaticamente, sem mudar a meta semanal.",
       ],
       tip: "Os cronômetros são salvos no aparelho e podem ser recuperados por backup.",
+      task: {
+        instruction: "Abra e feche o tempo bruto para conhecer o controle dos cronômetros.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Mostrar só o tempo bruto", "Ver tempo bruto"],
+            hint: "Clique no cartão Tempo bruto.",
+          },
+          {
+            kind: "click",
+            labels: [
+              "Fechar tempo bruto e mostrar os cronômetros atuais",
+              "Voltar aos cronômetros de aulas, revisões e exercícios",
+            ],
+            hint: "Clique novamente no cartão para voltar.",
+          },
+        ],
+      },
     },
     {
       nav: "Aulas",
@@ -60,6 +110,21 @@
         "Em cada aula, você pode marcar como vista, registrar uma Nota, editar ou remover.",
       ],
       tip: "Ao marcar uma aula como vista, o app agenda automaticamente revisões para 24 horas, 7 dias e 30 dias.",
+      task: {
+        instruction: "Abra o formulário de aula e feche ou salve para experimentar o fluxo.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Adicionar aula"],
+            hint: "Clique em Adicionar aula.",
+          },
+          {
+            kind: "click",
+            labels: ["Cancelar", "Salvar aula"],
+            hint: "Confira os campos e clique em Cancelar ou Salvar aula.",
+          },
+        ],
+      },
     },
     {
       nav: "Exercícios",
@@ -75,6 +140,21 @@
         "Edite uma nota existente ou remova um registro; uma nota baixa também pode criar um lembrete de reforço.",
       ],
       tip: "Você também pode abrir o formulário de nota diretamente pelo botão Nota dentro de uma aula.",
+      task: {
+        instruction: "Preencha a matéria, informe o resultado e salve uma nota.",
+        parts: [
+          {
+            kind: "input",
+            selector: 'input[placeholder="Ex: Pandas"]',
+            hint: "Digite uma matéria no campo Matéria.",
+          },
+          {
+            kind: "click",
+            labels: ["Salvar nota", "Atualizar nota"],
+            hint: "Clique em Salvar nota.",
+          },
+        ],
+      },
     },
     {
       nav: "Revisões",
@@ -90,6 +170,31 @@
         "Registrar estudo permite criar um ciclo de revisão mesmo para um estudo feito fora da lista de aulas.",
       ],
       tip: "As cotas por dia evitam acumular revisões demais; você pode ajustá-las em Configurações.",
+      task: {
+        instruction: "Registre um estudo e deixe o app agendar o ciclo de revisão.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Registrar estudo"],
+            hint: "Clique em Registrar estudo.",
+          },
+          {
+            kind: "input",
+            selector: 'input[placeholder="Ex.: Matemática"]',
+            hint: "Digite a matéria estudada.",
+          },
+          {
+            kind: "input",
+            selector: 'input[placeholder="Ex.: Equações do 2º grau"]',
+            hint: "Digite o assunto estudado.",
+          },
+          {
+            kind: "click",
+            labels: ["Salvar e agendar revisões"],
+            hint: "Clique em Salvar e agendar revisões.",
+          },
+        ],
+      },
     },
     {
       nav: "Lembretes",
@@ -105,6 +210,21 @@
         "Exclua lembretes que não fazem mais sentido; registros de nota baixa aparecem identificados automaticamente.",
       ],
       tip: "O Dashboard mostra os próximos lembretes para você não precisar consultar esta tela o tempo todo.",
+      task: {
+        instruction: "Crie um lembrete simples para praticar o acompanhamento de tarefas.",
+        parts: [
+          {
+            kind: "input",
+            selector: 'input[placeholder*="Comprar caderno"]',
+            hint: "Digite o texto do lembrete.",
+          },
+          {
+            kind: "click",
+            labels: ["Adicionar"],
+            hint: "Clique em Adicionar.",
+          },
+        ],
+      },
     },
     {
       nav: "Cronograma",
@@ -120,6 +240,16 @@
         "A quantidade concluída e pendente fica visível nos dias que têm aulas programadas.",
       ],
       tip: "A escala configurada define onde as aulas novas e as revisões serão distribuídas.",
+      task: {
+        instruction: "Alterne a visualização do cronograma.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Semana", "Mês"],
+            hint: "Clique em Semana ou Mês.",
+          },
+        ],
+      },
     },
     {
       nav: "Dashboard",
@@ -135,6 +265,26 @@
         "Reprogramar pendentes aplica a escala a partir da data escolhida; aulas já vistas não mudam.",
       ],
       tip: "Sempre confira o resumo do modal antes de aplicar uma alteração permanente.",
+      task: {
+        instruction: "Abra uma simulação ou o resumo inteligente e feche sem aplicar mudanças.",
+        parts: [
+          {
+            kind: "click",
+            labels: [
+              "Simular término",
+              "Vou ficar ocupado",
+              "Reprogramar atrasadas",
+              "Resumo inteligente",
+            ],
+            hint: "Clique em uma ferramenta de recuperação no Dashboard.",
+          },
+          {
+            kind: "click",
+            labels: ["Fechar", "Agora não"],
+            hint: "Leia o resumo e clique em Fechar ou Agora não.",
+          },
+        ],
+      },
     },
     {
       nav: "Estatísticas",
@@ -150,6 +300,16 @@
         "Matérias em foco mostram onde o curso está avançando; a frase motivacional pode ser trocada em Pular frase.",
       ],
       tip: "A estatística fica mais útil quando você usa os cronômetros ou registra suas sessões com regularidade.",
+      task: {
+        instruction: "Alterne a frase motivacional para testar uma ação da tela.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Pular frase"],
+            hint: "Clique em Pular frase.",
+          },
+        ],
+      },
     },
     {
       nav: "Metas",
@@ -165,6 +325,21 @@
         "Remova uma meta quando ela deixar de ser relevante.",
       ],
       tip: "Prefira metas observáveis e curtas: elas alimentam a sensação de avanço todos os dias.",
+      task: {
+        instruction: "Crie uma meta pequena e atualize seu acompanhamento.",
+        parts: [
+          {
+            kind: "input",
+            selector: 'input[placeholder="Ex: Fazer 10 exercícios"]',
+            hint: "Digite o nome de uma meta.",
+          },
+          {
+            kind: "click",
+            labels: ["Adicionar"],
+            hint: "Clique em Adicionar.",
+          },
+        ],
+      },
     },
     {
       nav: "Configurações",
@@ -180,6 +355,16 @@
         "Salve as configurações para que o Dashboard e o cronograma usem a nova rotina.",
       ],
       tip: "A nova quantidade de aulas começa no dia seguinte; a quantidade de revisões passa a valer hoje.",
+      task: {
+        instruction: "Salve as configurações para aplicar a rotina ao app.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Salvar configurações"],
+            hint: "Clique em Salvar configurações.",
+          },
+        ],
+      },
     },
     {
       nav: "Configurações",
@@ -195,6 +380,16 @@
         "Resetar dados apaga o planejamento e volta ao início; use somente depois de confirmar que o backup está seguro.",
       ],
       tip: "Faça um backup antes de grandes mudanças no cronograma ou de limpar o navegador.",
+      task: {
+        instruction: "Baixe um backup para praticar a proteção dos seus dados.",
+        parts: [
+          {
+            kind: "click",
+            labels: ["Baixar backup"],
+            hint: "Clique em Baixar backup.",
+          },
+        ],
+      },
     },
     {
       nav: "Dashboard",
@@ -210,6 +405,10 @@
         "Use a trilha como feedback: ela complementa as estatísticas, mas não substitui seu planejamento.",
       ],
       tip: "Um estudo curto e concluído hoje vale mais para a sequência do que um plano perfeito que nunca começa.",
+      task: {
+        manual: true,
+        instruction: "Observe a porcentagem do curso e a trilha. Quando entender onde o progresso aparece, confirme abaixo.",
+      },
     },
     {
       title: "Pronto para começar",
@@ -222,6 +421,10 @@
         "O guia completo pode ser reaberto pelo botão no canto inferior a qualquer momento.",
       ],
       tip: "Comece agora por Adicionar aula. O primeiro ciclo de revisão será criado quando você marcar essa aula como vista.",
+      task: {
+        manual: true,
+        instruction: "Você concluiu o percurso. Confirme para encerrar o guia e guardar seu progresso.",
+      },
     },
   ];
 
@@ -229,6 +432,120 @@
   let layer = null;
   let focus = null;
   let focusTimer = null;
+  let minimized = false;
+  let completedSteps = new Set();
+  let taskProgress = steps.map(() => 0);
+
+  const resetProgress = () => {
+    current = 0;
+    completedSteps = new Set();
+    taskProgress = steps.map(() => 0);
+  };
+
+  const loadProgress = () => {
+    resetProgress();
+    try {
+      if (localStorage.getItem(GUIDE_KEY)) return;
+      const saved = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "null");
+      if (!saved || typeof saved !== "object") return;
+      current = Math.max(0, Math.min(steps.length - 1, Number(saved.current) || 0));
+      completedSteps = new Set(
+        (Array.isArray(saved.completed) ? saved.completed : []).filter(
+          (index) => Number.isInteger(index) && index >= 0 && index < steps.length
+        )
+      );
+      taskProgress = steps.map((step, index) =>
+        Math.max(0, Math.min(step.task?.parts?.length || 0, Number(saved.progress?.[index]) || 0))
+      );
+    } catch {
+      resetProgress();
+    }
+  };
+
+  const saveProgress = () => {
+    try {
+      localStorage.setItem(
+        PROGRESS_KEY,
+        JSON.stringify({
+          current,
+          completed: [...completedSteps],
+          progress: taskProgress,
+        })
+      );
+    } catch {
+      // Storage may be blocked; the current guide session still works.
+    }
+  };
+
+  const isCurrentComplete = () => completedSteps.has(current);
+
+  const normalize = (value) => String(value || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+  const actionLabel = (element) =>
+    normalize(
+      [element?.textContent, element?.getAttribute("aria-label"), element?.getAttribute("title")]
+        .filter(Boolean)
+        .join(" ")
+    );
+
+  const matchesPart = (part, event) => {
+    if (part.kind === "input") {
+      const input = event.target;
+      return (
+        (event.type === "input" || event.type === "change") &&
+        input?.matches?.(part.selector) &&
+        String(input.value || "").trim().length > 0
+      );
+    }
+
+    if (event.type !== "click") return false;
+    const element = event.target?.closest?.("button, a, [role='button']");
+    if (!element || (part.selector && !element.matches(part.selector))) return false;
+    const label = actionLabel(element);
+    return (part.labels || []).some((expected) => label.includes(normalize(expected)));
+  };
+
+  const completeCurrent = () => {
+    const task = steps[current].task;
+    if (!task?.manual && taskProgress[current] < (task?.parts?.length || 0)) return;
+    completedSteps.add(current);
+    saveProgress();
+    render({ navigate: false });
+  };
+
+  const handleTaskEvent = (event) => {
+    if (!layer || event.isTrusted === false || event.target?.closest?.(".guided-tutorial-card")) return;
+    const task = steps[current].task;
+    const part = task?.parts?.[taskProgress[current]];
+    if (!part || !matchesPart(part, event)) return;
+
+    taskProgress[current] += 1;
+    if (taskProgress[current] >= task.parts.length) completedSteps.add(current);
+    saveProgress();
+    render({ navigate: false });
+  };
+
+  const replaceLegacyTutorial = () => {
+    if (layer) return;
+    const legacy = [...document.querySelectorAll('[role="dialog"]')].find(
+      (dialog) => dialog.querySelector('button[title="Pular tutorial"]') && dialog.textContent.includes("TUTORIAL")
+    );
+    if (!legacy || legacy.dataset.practicalGuide) return;
+    legacy.dataset.practicalGuide = "1";
+    legacy.querySelector('button[title="Pular tutorial"]')?.click();
+    window.setTimeout(() => {
+      if (!layer) open();
+    }, 80);
+  };
+
+  const handleLegacyTrigger = (event) => {
+    if (event.isTrusted === false || event.target?.closest?.(".guided-tutorial-card")) return;
+    const button = event.target?.closest?.("button");
+    if (button?.textContent.trim() !== "Ver tutorial") return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    open();
+  };
 
   const isVisible = (element) => {
     if (!element || element.hidden) return false;
@@ -297,9 +614,12 @@
     return element;
   };
 
-  const render = () => {
+  const render = ({ navigate = true } = {}) => {
     if (!layer) return;
     const step = steps[current];
+    const task = step.task || {};
+    const parts = task.parts || [];
+    const done = isCurrentComplete();
     const number = String(current + 1).padStart(2, "0");
     const total = steps.length;
 
@@ -317,16 +637,38 @@
     tip.hidden = !step.tip;
 
     const progress = layer.querySelector(".guided-tutorial-progress");
-    [...progress.children].forEach((item, index) => item.classList.toggle("is-active", index <= current));
+    [...progress.children].forEach((item, index) => {
+      item.classList.toggle("is-active", index < current || completedSteps.has(index));
+      item.classList.toggle("is-current", index === current);
+    });
+
+    const taskBox = layer.querySelector(".guided-tutorial-task");
+    const taskInstruction = layer.querySelector(".guided-tutorial-task-instruction");
+    const taskState = layer.querySelector(".guided-tutorial-task-state");
+    const manualComplete = layer.querySelector('[data-guide-action="manual-complete"]');
+    taskBox.classList.toggle("is-done", done);
+    taskInstruction.textContent = task.instruction || "Siga a orientação na tela.";
+    taskState.textContent = done
+      ? "Etapa concluída. O próximo passo está liberado."
+      : task.manual
+        ? "Quando terminar, confirme a conclusão abaixo."
+        : `Ação ${Math.min(taskProgress[current] + 1, parts.length)} de ${parts.length}: ${parts[taskProgress[current]]?.hint || task.instruction}`;
+    manualComplete.hidden = !task.manual || done;
 
     const back = layer.querySelector('[data-guide-action="back"]');
     back.disabled = current === 0;
-    layer.querySelector('[data-guide-action="next"]').textContent = current === total - 1 ? "Concluir" : "Próximo";
+    const next = layer.querySelector('[data-guide-action="next"]');
+    next.disabled = !done;
+    next.textContent = current === total - 1 ? "Concluir" : "Próximo";
 
     const open = layer.querySelector('[data-guide-action="open"]');
     open.hidden = !step.nav;
 
-    if (step.nav) navigateTo(step.nav);
+    const minimize = layer.querySelector('[data-guide-action="minimize"]');
+    minimize.textContent = minimized ? "+" : "−";
+    minimize.setAttribute("aria-label", minimized ? "Mostrar instrução" : "Minimizar instrução");
+
+    if (navigate && step.nav) navigateTo(step.nav);
     else window.setTimeout(moveFocus, 80);
   };
 
@@ -335,9 +677,12 @@
     if (completed) {
       try {
         localStorage.setItem(GUIDE_KEY, "1");
+        localStorage.removeItem(PROGRESS_KEY);
       } catch {
         // Storage may be blocked; the guide still works for this session.
       }
+    } else {
+      saveProgress();
     }
     window.clearTimeout(focusTimer);
     document.body.classList.remove("guided-tutorial-open");
@@ -348,7 +693,8 @@
 
   const open = () => {
     if (layer) return;
-    current = 0;
+    loadProgress();
+    minimized = false;
     layer = makeElement("div", "guided-tutorial-layer");
     layer.setAttribute("role", "dialog");
     layer.setAttribute("aria-modal", "true");
@@ -361,11 +707,17 @@
     const card = makeElement("section", "guided-tutorial-card");
     const header = makeElement("header", "guided-tutorial-header");
     const kicker = makeElement("p", "guided-tutorial-kicker");
+    const headerActions = makeElement("div", "guided-tutorial-header-actions");
+    const minimizeButton = makeElement("button", "guided-tutorial-minimize", "−");
+    minimizeButton.type = "button";
+    minimizeButton.dataset.guideAction = "minimize";
+    minimizeButton.setAttribute("aria-label", "Minimizar instrução");
     const closeButton = makeElement("button", "guided-tutorial-close", "×");
     closeButton.type = "button";
     closeButton.setAttribute("aria-label", "Fechar guia");
     closeButton.dataset.guideAction = "close";
-    header.append(kicker, closeButton);
+    headerActions.append(minimizeButton, closeButton);
+    header.append(kicker, headerActions);
 
     const body = makeElement("div", "guided-tutorial-body");
     const title = makeElement("h2", "guided-tutorial-title");
@@ -384,6 +736,22 @@
     body.append(where);
     body.append(makeElement("ul", "guided-tutorial-list"));
     body.append(makeElement("div", "guided-tutorial-tip"));
+
+    const taskBox = makeElement("div", "guided-tutorial-task");
+    taskBox.append(
+      makeElement("span", "guided-tutorial-task-label", "Faça agora"),
+      makeElement("p", "guided-tutorial-task-instruction"),
+      makeElement("p", "guided-tutorial-task-state")
+    );
+    const manualComplete = makeElement(
+      "button",
+      "guided-tutorial-button guided-tutorial-task-confirm",
+      "Marcar etapa como concluída"
+    );
+    manualComplete.type = "button";
+    manualComplete.dataset.guideAction = "manual-complete";
+    taskBox.append(manualComplete);
+    body.append(taskBox);
 
     const progress = makeElement("div", "guided-tutorial-progress");
     steps.forEach(() => progress.append(makeElement("span")));
@@ -415,8 +783,15 @@
       const action = event.target.closest("[data-guide-action]")?.dataset.guideAction;
       if (!action) return;
       if (action === "close") close();
+      if (action === "minimize") {
+        minimized = !minimized;
+        card.classList.toggle("is-collapsed", minimized);
+        render({ navigate: false });
+      }
+      if (action === "manual-complete") completeCurrent();
       if (action === "back" && current > 0) {
         current -= 1;
+        saveProgress();
         render();
       }
       if (action === "open") {
@@ -424,9 +799,11 @@
         if (step.nav) navigateTo(step.nav);
       }
       if (action === "next") {
+        if (!isCurrentComplete()) return;
         if (current === steps.length - 1) close(true);
         else {
           current += 1;
+          saveProgress();
           render();
         }
       }
@@ -451,23 +828,34 @@
 
   const start = () => {
     mountLauncher();
+    replaceLegacyTutorial();
     const observer = new MutationObserver(() => {
       mountLauncher();
+      replaceLegacyTutorial();
       if (layer) moveFocus();
     });
     observer.observe(document.body, { childList: true, subtree: true });
     window.addEventListener("resize", moveFocus);
     window.addEventListener("scroll", moveFocus, true);
+    document.addEventListener("click", handleTaskEvent, true);
+    document.addEventListener("click", handleLegacyTrigger, true);
+    document.addEventListener("input", handleTaskEvent, true);
+    document.addEventListener("change", handleTaskEvent, true);
     window.addEventListener("keydown", (event) => {
       if (!layer) return;
       if (event.key === "Escape") close();
       if (event.key === "ArrowLeft" && current > 0) {
         current -= 1;
+        saveProgress();
         render();
       }
-      if (event.key === "ArrowRight" && current < steps.length - 1) {
-        current += 1;
-        render();
+      if (event.key === "ArrowRight" && isCurrentComplete()) {
+        if (current === steps.length - 1) close(true);
+        else {
+          current += 1;
+          saveProgress();
+          render();
+        }
       }
     });
   };

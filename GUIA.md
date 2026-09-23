@@ -1,6 +1,6 @@
 # Guia completo do MeuEstudo
 
-O MeuEstudo é um PWA de planejamento e acompanhamento de estudos. O guia interativo fica disponível pelo botão **Guia completo**, no canto inferior da tela, e percorre as áreas do aplicativo sem alterar os dados.
+O MeuEstudo é um PWA de planejamento e acompanhamento de estudos. O guia prático fica disponível pelo botão **Guia completo**, no canto inferior da tela, mantém o app visível e só libera cada próximo passo depois da ação orientada.
 
 ## Fluxo recomendado
 
@@ -10,6 +10,8 @@ O MeuEstudo é um PWA de planejamento e acompanhamento de estudos. O guia intera
 4. Marque a aula como vista para criar as revisões de 24 horas, 7 dias e 30 dias.
 5. Registre exercícios e notas para identificar conteúdos que precisam de reforço.
 6. Acompanhe o ritmo em **Estatísticas**, **Metas** e na trilha do Dashboard.
+
+Durante o guia, algumas etapas criam um registro real, como uma nota, um lembrete ou uma meta. Use seus próprios dados ou feche o guia se preferir não registrar; o progresso da orientação fica salvo para continuar depois.
 
 ## Áreas e funções
 
