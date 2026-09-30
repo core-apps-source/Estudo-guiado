@@ -1,4 +1,4 @@
-const CACHE_NAME = "meuestudo-v9";
+const CACHE_NAME = "meuestudo-v10";
 
 const SHELL = [
   "./",
@@ -10,6 +10,8 @@ const SHELL = [
   "./icon-192.png",
   "./icon-512.png",
   "./icon-512-maskable.png",
+  "./index-CqtP_Q0j.js",
+  "./index-DySGw9k5.css",
 ];
 
 self.addEventListener("install", (event) => {
